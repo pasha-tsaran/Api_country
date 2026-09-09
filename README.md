@@ -1,41 +1,29 @@
-## Курсы валют (`currency.py`)
+# Текущая погода (`weather.py`)
 
-Установите зависимости и запустите модуль:
-
-```powershell
-.\venv\Scripts\Activate.ps1
-pip install -r requirement.txt
-python currency.py
-```
-
-После запуска появится меню конвертера. В нём можно конвертировать любую сумму,
-посмотреть все доступные коды, получить информацию о конкретной валюте или
-принудительно обновить курсы. Ответ API сохраняется в `currency_rate.json` и
-повторно используется в течение 24 часов.
-
-Пять ключевых полей ответа `latest`: `base_code`, `time_last_update_utc`,
-`time_next_update_utc`, `rates.RUB` и `rates.USD`. У открытого endpoint таблица
-называется `rates` (поле `conversion_rates` используется в API с ключом).
-Документация и источник курсов: [ExchangeRate-API](https://www.exchangerate-api.com/docs/free).
+Консольное приложение получает текущую погоду по названию города. Сначала OpenWeather Geocoding API определяет координаты, затем Current Weather API возвращает температуру в градусах Цельсия и описание погоды на русском языке.
 
 ## Запуск
 
-```
-.\venv\Scripts\Activate.ps1
-pip install -r requirement.txt
+Установите зависимости:
+
+```powershell
+pip install -r requirements.txt
 ```
 
-Универсальный тестовый модуль с GET, POST и запросом страны:
+Создайте в корне проекта файл `.env` и добавьте ключ OpenWeather:
 
-```
-python api_tester.py
-```
-
-Отдельный цветной справочник стран:
-
-```
-python country_info.py
+```dotenv
+API_KEY=ваш_ключ
 ```
 
-Для завершения справочника введите
-`exit`.
+Запустите приложение:
+
+```powershell
+python weather.py
+```
+
+Введите название города. Пример результата:
+
+```text
+Погода в Москва: 12.4°C, пасмурно
+```
