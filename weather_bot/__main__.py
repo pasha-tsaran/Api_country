@@ -1,5 +1,3 @@
-"""Точка входа VK-бота погоды."""
-
 from weather_bot.bot import run
 
 
